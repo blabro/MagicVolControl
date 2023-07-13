@@ -1,5 +1,5 @@
 import math
-
+import keyboard
 import cv2
 import time
 import numpy as np
@@ -9,7 +9,6 @@ from comtypes import CLSCTX_ALL
 from pycaw.pycaw import AudioUtilities, IAudioEndpointVolume
 ###################################
 wCam, hCam = 980, 720
-
 ###################################
 
 cap = cv2.VideoCapture(0)
@@ -49,8 +48,6 @@ while True:
         cv2.circle(img, (cx, cy), 15, (155,0,255), cv2.FILLED)
 
         length = math.hypot(x2-x1, y2-y1)
-        #print(length)
-
 
         # hand range 35,220
         # volume range -24 -12
@@ -75,6 +72,8 @@ while True:
     cv2.putText(img, f'FPS: {int(fps)}', (40,50), cv2.FONT_HERSHEY_SIMPLEX, 1, (255,0,0),3)
     cv2.imshow("Img", img)
     cv2.waitKey(1)
+    if keyboard.is_pressed('space'):
+        break
 
 
 
